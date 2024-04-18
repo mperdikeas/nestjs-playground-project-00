@@ -8,6 +8,12 @@ import {
 
 import { Request } from 'express';
 
+
+type FindOneResT = {
+  id: number
+  headers: {[key: string]: (string | string[])}
+}
+
 @Controller('cats')
 export class CatsController {
 
@@ -21,8 +27,11 @@ export class CatsController {
   findOne(
     @Param('id', new ParseIntPipe()) id,
     @Req() request: Request
-  ): Request {
-    return id;
+  ): FindOneResT {
+    return {
+      id,
+      headers: request.headers
+    };
   }
 
 }
