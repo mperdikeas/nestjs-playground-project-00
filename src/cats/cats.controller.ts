@@ -23,7 +23,7 @@ export class CatsController {
     return 'all cats';
   }
 
-  @Get('/:id')
+  @Get(':id')
   findOne(
     @Param('id', new ParseIntPipe()) id,
     @Req() request: Request
